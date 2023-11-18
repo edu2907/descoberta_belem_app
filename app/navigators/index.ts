@@ -1,3 +1,5 @@
 export * from "./AppNavigator"
 export * from "./navigationUtilities"
-// export other navigators from here
+// export other navigators from hereexport * from "./PontosInteresseNavigator"
+export * from "./PontosInteresseNavigator"
+export * from "./AppDrawerNavigator"
