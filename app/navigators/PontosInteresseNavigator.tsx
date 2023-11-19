@@ -1,13 +1,17 @@
 import React from "react"
-import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import { NativeStackScreenProps, createNativeStackNavigator } from "@react-navigation/native-stack"
 import {
   PontosInteresseListScreen,
-  WelcomeScreen
 } from "app/screens"
 
 export type PontosInteresseNavigatorParamList = {
-  PontosInteresseList: undefined
+  PontosInteresseList: { a: string }
 }
+
+export type PontosInteresseNavigatorScreenProps<T extends keyof PontosInteresseNavigatorParamList> = NativeStackScreenProps<
+  PontosInteresseNavigatorParamList,
+  T
+>
 
 const Stack = createNativeStackNavigator<PontosInteresseNavigatorParamList>()
 export const PontosInteresseNavigator = () => {
