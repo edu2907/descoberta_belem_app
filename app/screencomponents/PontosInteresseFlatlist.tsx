@@ -45,4 +45,5 @@ const $cardListContainer: ViewStyle = {
 const $cardImage: ImageStyle = {
   width: "100%",
   height: 200,
+  borderRadius: spacing.xs,
 }
