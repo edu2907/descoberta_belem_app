@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import { observer } from "mobx-react-lite"
 import { ImageStyle, ViewStyle } from "react-native"
 import { AppStackScreenProps } from "app/navigators"
-import { AutoImage, Card, Screen, Text } from "app/components"
+import { AutoImage, Card, Dropdown, Screen, Text } from "app/components"
 import { Mock } from "app/services/mock"
 import { spacing } from "app/theme"
 // import { useNavigation } from "@react-navigation/native"
@@ -38,7 +38,7 @@ export const PontosInteresseDetailScreen: FC<PontosInteresseDetailScreenProps> =
       />
       <Text preset="bold" text={pontoInteresseData.nome} />
       <Text text={`3 Avaliações`} />
-      <Card heading="Sobre o Local" content={pontoInteresseData.descricao} footer={pontoInteresseData.localizacao} />
+      <Dropdown title="mainScreen.about_place" dropContent={`${pontoInteresseData.descricao}\n${pontoInteresseData.localizacao}`} />
 
     </Screen>
   )

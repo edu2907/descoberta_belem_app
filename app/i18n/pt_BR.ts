@@ -6,7 +6,8 @@ const pt_BR = {
     back: "Back",
   },
   mainScreen: {
-    head: 'Pontos Turísticos e Cultura'
+    head: 'Pontos Turísticos e Cultura',
+    about_place: 'Sobre o local',
   },
   welcomeScreen: {
     postscript:
