@@ -54,6 +54,7 @@ export function Dropdown({ title, dropContent = "", headerIcon = "pin" }: Dropdo
 const $root: ViewStyle = {
   width: "100%",
   padding: spacing.md,
+  paddingBottom: spacing.xs,
   alignItems: "center",
   backgroundColor: colors.palette.primary600,
 }

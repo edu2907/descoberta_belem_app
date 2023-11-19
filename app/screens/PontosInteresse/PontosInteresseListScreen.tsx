@@ -6,6 +6,7 @@ import { Screen } from "app/components"
 import { PontosInteresseFlatlist } from "app/screencomponents"
 import PontosInteresseHeader from "app/screencomponents/PontosInteresseHeader"
 import { Mock } from "app/services/mock"
+import { spacing } from "app/theme"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "app/models"
 

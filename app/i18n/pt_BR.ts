@@ -9,6 +9,15 @@ const pt_BR = {
     head: 'Pontos Turísticos e Cultura',
     about_place: 'Sobre o local',
   },
+  timeAgo: {
+    days: 'há {{count}} dias',
+    day: 'há 1 dia',
+    months: "há {{count}} meses",
+    month: "há 1 mês",
+    years: "há {{count}} anos",
+    year: 'há 1 ano',
+    justNow: 'agora mesmo',
+  },
   welcomeScreen: {
     postscript:
       "psst  — This probably isn't what your app looks like. (Unless your designer handed you these screens, and in that case, ship it!)",
