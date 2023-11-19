@@ -8,17 +8,18 @@ import PontosInteresseHeader from "app/screencomponents/PontosInteresseHeader"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "app/models"
 
-interface PontosInteresseListScreenProps
-  extends PontosInteresseNavigatorScreenProps<"PontosInteresseList"> {}
+const usePontosInteresseListScreenViewController = ({ navigation }) => {
+  const navigateToPontosInteresseDetail = (pontosInteresseId: number) => {
+    navigation.navigate("PontosInteresseDetail", { pontosInteresseId })
+  }
 
-const usePontosInteresseListScreenViewController = () => {
   const pontosInteresseDataArray = [
     {
       id: 6,
       nome: "Parque Estadual do Utinga",
       caminho_imagem:
         "https://www.parquedoutinga.com.br/wp-content/uploads/2020/09/parque-do-utinga-jonas-santana-1024x573.png",
-      localizacao: "Av. João Paulo II, S/N - Curió-Utinga, Belém",
+        localizacao: "Av. João Paulo II, S/N - Curió-Utinga, Belém",
     },
     {
       id: 7,
@@ -31,17 +32,22 @@ const usePontosInteresseListScreenViewController = () => {
       id: 10,
       nome: "Estação das Docas",
       caminho_imagem:
-        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/a8/32/90/as-vistas-sao-muito-legais.jpg?w=1200&h=-1&s=1",
+      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/a8/32/90/as-vistas-sao-muito-legais.jpg?w=1200&h=-1&s=1",
       localizacao: "Av. Mal. Hermes, S/N - Campina",
     },
   ]
 
-  return { pontosInteresseDataArray }
+
+  
+  return { pontosInteresseDataArray, navigateToPontosInteresseDetail }
 }
 
+interface PontosInteresseListScreenProps
+  extends PontosInteresseNavigatorScreenProps<"PontosInteresseList"> {}
+
 export const PontosInteresseListScreen: FC<PontosInteresseListScreenProps> = observer(
-  function PontosInteresseListScreen() {
-    const viewController = usePontosInteresseListScreenViewController()
+  function PontosInteresseListScreen({ navigation }: PontosInteresseListScreenProps) {
+    const screenObj = usePontosInteresseListScreenViewController({ navigation})
 
     // Pull in one of our MST stores
     // const { someStore, anotherStore } = useStores()
@@ -50,7 +56,7 @@ export const PontosInteresseListScreen: FC<PontosInteresseListScreenProps> = obs
     // const navigation = useNavigation()
     return (
       <Screen style={$root} preset="fixed" safeAreaEdges={["top", "bottom"]}>
-        <PontosInteresseFlatlist headerComponent={<PontosInteresseHeader />} pontosInteresseList={viewController.pontosInteresseDataArray} />
+        <PontosInteresseFlatlist headerComponent={<PontosInteresseHeader />} onCardPress={screenObj.navigateToPontosInteresseDetail} pontosInteresseList={screenObj.pontosInteresseDataArray} />
       </Screen>
     )
   },

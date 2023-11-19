@@ -6,10 +6,11 @@ import { AutoImage, Card } from 'app/components'
 
 export type PontosInteresseFlatlistProps = {
   pontosInteresseList: any[],
-  headerComponent: JSX.Element
+  headerComponent: JSX.Element,
+  onCardPress: (pontoInteresseId: number) => void,
 }
 
-export function PontosInteresseFlatlist({ pontosInteresseList, headerComponent }: PontosInteresseFlatlistProps) {
+export function PontosInteresseFlatlist({ pontosInteresseList, headerComponent, onCardPress }: PontosInteresseFlatlistProps) {
   return (
     <FlatList
       contentContainerStyle={$cardListContainer}
@@ -18,6 +19,7 @@ export function PontosInteresseFlatlist({ pontosInteresseList, headerComponent }
       renderItem={({ item: pontoInteresse }) => {
         return (
           <Card
+            onPress={() => onCardPress(pontoInteresse.id)}
             HeadingComponent={
               <AutoImage
                 style={$cardImage}

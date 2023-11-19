@@ -1,11 +1,13 @@
 import React from "react"
 import { NativeStackScreenProps, createNativeStackNavigator } from "@react-navigation/native-stack"
 import {
+  PontosInteresseDetailScreen,
   PontosInteresseListScreen,
 } from "app/screens"
 
 export type PontosInteresseNavigatorParamList = {
-  PontosInteresseList: { a: string }
+  PontosInteresseList: undefined
+  PontosInteresseDetail: { pontosInteresseId: number }
 }
 
 export type PontosInteresseNavigatorScreenProps<T extends keyof PontosInteresseNavigatorParamList> = NativeStackScreenProps<
@@ -16,8 +18,9 @@ export type PontosInteresseNavigatorScreenProps<T extends keyof PontosInteresseN
 const Stack = createNativeStackNavigator<PontosInteresseNavigatorParamList>()
 export const PontosInteresseNavigator = () => {
   return (
-    <Stack.Navigator screenOptions={{ cardStyle: { backgroundColor: "transparent" }, headerShown: false, }}>
+    <Stack.Navigator screenOptions={{ headerShown: false, }}>
       <Stack.Screen name="PontosInteresseList" component={PontosInteresseListScreen} />
+      <Stack.Screen name="PontosInteresseDetail" component={PontosInteresseDetailScreen} />
     </Stack.Navigator>
   )
 }
