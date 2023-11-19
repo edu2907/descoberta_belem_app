@@ -36,6 +36,7 @@ export type AppStackParamList = {
   Welcome: undefined
   // 🔥 Your screens go here
   Drawer: undefined
+  PontosInteresseDetail: { pontosInteresseId: number }
 	// IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
 }
 
@@ -55,9 +56,10 @@ const Stack = createNativeStackNavigator<AppStackParamList>()
 const AppStack = observer(function AppStack() {
   return (
     <Stack.Navigator
-      screenOptions={{ headerShown: false, navigationBarColor: colors.background }}
+      screenOptions={{ headerShown: false, navigationBarColor: colors.background, animation: "fade_from_bottom" }}
     >
       <Stack.Screen name="Drawer" component={AppDrawerNavigator} />
+      <Stack.Screen options={{ headerShown: true, title: 'Detalhes' }} name="PontosInteresseDetail"  component={Screens.PontosInteresseDetailScreen} />
     </Stack.Navigator>
   )
 })
