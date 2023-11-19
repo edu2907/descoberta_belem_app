@@ -1,13 +1,12 @@
-import { Translations } from "./pt_BR"
-
-const en: Translations = {
+/* eslint-disable camelcase */
+const pt_BR = {
   common: {
     ok: "OK!",
     cancel: "Cancel",
     back: "Back",
   },
   mainScreen: {
-    head: 'Tourist Spots and Culture'
+    head: 'Pontos Turísticos e Cultura'
   },
   welcomeScreen: {
     postscript:
@@ -30,4 +29,5 @@ const en: Translations = {
   },
 }
 
-export default en
+export type Translations = typeof pt_BR
+export default pt_BR

@@ -1,4 +1,4 @@
-import { Translations } from "./en"
+import { Translations } from "./pt_BR"
 
 const ko: Translations = {
   common: {

@@ -1,11 +1,10 @@
 import React, { FC } from "react"
 import { observer } from "mobx-react-lite"
-import { ImageStyle, ViewStyle } from "react-native"
+import { ViewStyle } from "react-native"
 import { PontosInteresseNavigatorScreenProps } from "app/navigators"
-import { AutoImage, Card, Screen } from "app/components"
-import { FlatList } from "react-native-gesture-handler"
-import { formatEnderecoAvaliacao } from "app/utils/pontosInteresseUtils"
-import { spacing } from "app/theme"
+import { Screen } from "app/components"
+import { PontosInteresseFlatlist } from "app/screencomponents"
+import PontosInteresseHeader from "app/screencomponents/PontosInteresseHeader"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "app/models"
 
@@ -13,8 +12,6 @@ interface PontosInteresseListScreenProps
   extends PontosInteresseNavigatorScreenProps<"PontosInteresseList"> {}
 
 const usePontosInteresseListScreenViewController = () => {
-
-
   const pontosInteresseDataArray = [
     {
       id: 6,
@@ -53,41 +50,12 @@ export const PontosInteresseListScreen: FC<PontosInteresseListScreenProps> = obs
     // const navigation = useNavigation()
     return (
       <Screen style={$root} preset="fixed" safeAreaEdges={["top", "bottom"]}>
-        <FlatList
-        contentContainerStyle={$cardListContainer}
-          data={viewController.pontosInteresseDataArray}
-          renderItem={({ item: pontoInteresse }) => {
-            return (
-              <Card
-                HeadingComponent={
-                  <AutoImage
-                    style={$cardImage}
-                    source={{ uri: pontoInteresse.caminho_imagem }}
-                  />
-                }
-                content={pontoInteresse.nome}
-                footer={formatEnderecoAvaliacao(pontoInteresse.localizacao)}
-              />
-            )
-          }}
-        />
+        <PontosInteresseFlatlist headerComponent={<PontosInteresseHeader />} pontosInteresseList={viewController.pontosInteresseDataArray} />
       </Screen>
     )
   },
 )
 
 const $root: ViewStyle = {
-  flex: 1, 
-}
-
-const $cardListContainer: ViewStyle = {
-  paddingHorizontal: spacing.lg,
-  paddingTop: spacing.xl,
-  gap: spacing.md,
-  paddingBottom: spacing.sm,
-}
-
-const $cardImage: ImageStyle = {
-  width: "100%",
-  height: 200,
+  flex: 1,
 }
