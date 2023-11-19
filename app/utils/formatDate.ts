@@ -36,15 +36,31 @@ export const showSinceDate = (date: string) => {
   // You might want to use your i18n library to translate these strings
   // This is a simplified example, replace with actual translation functions
   console.log(distance)
-  if (distance.includes('days')) {
-    const days = parseInt(distance.split(' ')[1]);
-    return I18n.t('timeAgo.days', { count: days });
-  } else if (distance.includes('months')) {
+  if (distance.includes('less')) {
+    return I18n.t('timeAgo.justNow');
+  }
+  else if (distance.includes('minute')) {
+    const minute = parseInt(distance.split(' ')[0]);
+  
+    return I18n.t((minute < 2 ? 'timeAgo.minute' : 'timeAgo.minutes'), { count: minute });
+  }
+  else if (distance.includes('hour')) {
+    const hour = parseInt(distance.split(' ')[1]);
+  
+    return I18n.t((hour < 2 ? 'timeAgo.hour' : 'timeAgo.hours'), { count: hour });
+  }
+  else if (distance.includes('day')) {
+    const days = parseInt(distance.split(' ')[0]);
+  
+    return I18n.t((days < 2 ? 'timeAgo.day' : 'timeAgo.days'), { count: days });
+  } else if (distance.includes('month')) {
     const months = parseInt(distance.split(' ')[1]);
-    return I18n.t('timeAgo.months', { count: months });
-  } else if (distance.includes('years')) {
+  
+    return I18n.t((months < 2 ? 'timeAgo.month' : 'timeAgo.months'), { count: months });
+  } else if (distance.includes('year')) {
     const years = parseInt(distance.split(' ')[1]);
-    return I18n.t(years < 2 ? 'timeAgo.year' : 'timeAgo.years', { count: years });
+  
+    return I18n.t((years < 2 ? 'timeAgo.year' : 'timeAgo.years'), { count: years });
   } else {
     return I18n.t('timeAgo.justNow');
   }

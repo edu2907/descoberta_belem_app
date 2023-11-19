@@ -10,6 +10,10 @@ const pt_BR = {
     about_place: 'Sobre o local',
   },
   timeAgo: {
+    minutes: 'há {{count}} minutos',
+    minute: 'há 1 minuto',
+    hours: 'há {{count}} horas',
+    hour: 'há 1 hora',
     days: 'há {{count}} dias',
     day: 'há 1 dia',
     months: "há {{count}} meses",

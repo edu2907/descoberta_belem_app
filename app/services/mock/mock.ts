@@ -43,7 +43,7 @@ export const Mock = {
         descricao: "Lugar muito bonito, com uma vista incrível, recomendo a todos.",
         avaliacao: 10,
         userName: "Usuário da Silva",
-        published_at: "2021-10-10T00:00:00.000Z"
+        published_at: "2023-11-19T00:00:00.000Z"
       },
       {
         id: 2,
