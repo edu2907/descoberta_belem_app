@@ -8,6 +8,9 @@ const pt_BR = {
   mainScreen: {
     head: 'Pontos Turísticos e Cultura',
     about_place: 'Sobre o local',
+    title: 'Início',
+    comentarios_head: 'Comentários',
+    post_comment: 'Avaliar',
   },
   timeAgo: {
     minutes: 'há {{count}} minutos',

@@ -35,7 +35,6 @@ export const showSinceDate = (date: string) => {
 
   // You might want to use your i18n library to translate these strings
   // This is a simplified example, replace with actual translation functions
-  console.log(distance)
   if (distance.includes('less')) {
     return I18n.t('timeAgo.justNow');
   }
