@@ -56,7 +56,7 @@ const $root: ViewStyle = {
   padding: spacing.md,
   paddingBottom: spacing.xs,
   alignItems: "center",
-  backgroundColor: colors.palette.primary600,
+  backgroundColor: colors.palette.primary100,
 }
 
 const $headContainer: ViewStyle = {

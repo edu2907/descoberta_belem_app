@@ -11,18 +11,18 @@ const palette = {
   neutral800: "#191015",
   neutral900: "#000000",
 
-  primary100: "#F4E0D9",
-  primary200: "#E8C1B4",
-  primary300: "#DDA28E",
-  primary400: "#D28468",
-  primary500: "#C76542",
-  primary600: "#A54F31",
+  primary100: "#2B355E",
+  primary200: "#1F2949",
+  primary300: "#141D34",
+  primary400: "#0E193F",
+  primary500: "#0C1631",
+  primary600: "#091121",
 
-  secondary100: "#DCDDE9",
-  secondary200: "#BCC0D6",
-  secondary300: "#9196B9",
-  secondary400: "#626894",
-  secondary500: "#41476E",
+  secondary100: "#8C8129",
+  secondary200: "#74631E",
+  secondary300: "#5D5116",
+  secondary400: "#4C400D",
+  secondary500: "#3B2F06",
 
   accent100: "#FFEED4",
   accent200: "#FFE1B2",
@@ -52,6 +52,10 @@ export const colors = {
    * The default text color in many components.
    */
   text: palette.neutral800,
+  /**
+   * Secondary text information.
+   */
+  invertedText: palette.neutral200,
   /**
    * Secondary text information.
    */
