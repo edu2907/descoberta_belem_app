@@ -1,18 +1,19 @@
+import { t } from 'i18n-js';
 import { object, string, InferType, ref } from 'yup';
 
 const password = string()
-  .required('Password is required');
+  .required(t('auth.validationErrors.requiredPassword'));
 
 const userName = string()
-  .required('Username is required');
+  .required(t('auth.validationErrors.requiredUserName'));
 
 export const cadastroSchema = object({
   userName,
-  email: string().required('Email is required').email('Email is invalid'),
+  email: string().required(t('auth.validationErrors.requiredEmail')).email(t('auth.validationErrors.invalidEmail')),
   password,
   passwordConfirmation: string()
-    .oneOf([ref('password')], 'Passwords must match')
-    .required('Confirm Password is required'),
+    .oneOf([ref('password')], t('auth.validationErrors.passwordsMustMatch'))
+    .required(t('auth.validationErrors.requiredPasswordConfirmation')),
 });
 
 export type CadastroSchemaType = InferType<typeof cadastroSchema>;

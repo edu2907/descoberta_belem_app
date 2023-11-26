@@ -68,28 +68,28 @@ export const CadastroScreen: FC<CadastroScreenProps> = observer(function Cadastr
             placeholder="Nome"
             value={formProps.userName}
             onChangeText={formSetters.setUserName}
-            status={formErrors.userName ? "error" : "disabled"}
+            status={formErrors.userName ? "error" : undefined}
             helper={formErrors.userName?.message}
           />
           <TextField
             placeholder="Email"
             value={formProps.email}
             onChangeText={formSetters.setEmail}
-            status={formErrors.email ? "error" : "disabled"}
+            status={formErrors.email ? "error" : undefined}
             helper={formErrors.email?.message}
           />
           <SecureTextField
             placeholder="Senha"
             value={formProps.password}
             onChangeText={formSetters.setPassword}
-            status={formErrors.password ? "error" : "disabled"}
+            status={formErrors.password ? "error" : undefined}
             helper={formErrors.password?.message}
           />
           <SecureTextField
             placeholder="Confirmar Senha"
             value={formProps.passwordConfirmation}
             onChangeText={formSetters.setPasswordConfirmation}
-            status={formErrors.passwordConfirmation ? "error" : "disabled"}
+            status={formErrors.passwordConfirmation ? "error" : undefined}
             helper={formErrors.passwordConfirmation?.message}
           />
         </>

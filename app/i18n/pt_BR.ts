@@ -18,6 +18,14 @@ const pt_BR = {
     loginVerb: "Entrar",
     loginOption: "Já possui uma conta?",
     registerOption: "Não possui uma conta?",
+    validationErrors: {
+      requiredEmail: "Email é obrigatório",
+      invalidEmail: "Email deve ser válido",
+      requiredPassword: "Senha é obrigatória",
+      requiredUserName: "Nome é obrigatório",
+      requiredPasswordConfirmation: "Confirmação de senha é obrigatória",
+      passwordsMustMatch: "As senhas devem ser iguais",
+    },
   },
   timeAgo: {
     minutes: 'há {{count}} minutos',
