@@ -4,6 +4,7 @@ const pt_BR = {
     ok: "OK!",
     cancel: "Cancel",
     back: "Back",
+    or: "Ou"
   },
   mainScreen: {
     head: 'Pontos Turísticos e Cultura',
@@ -11,6 +12,10 @@ const pt_BR = {
     title: 'Início',
     comentarios_head: 'Comentários',
     post_comment: 'Avaliar',
+  },
+  auth: {
+    registerVerb: "Criar Conta",
+    loginVerb: "Entrar",
   },
   timeAgo: {
     minutes: 'há {{count}} minutos',

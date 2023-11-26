@@ -6,6 +6,7 @@ import { colors, spacing } from "app/theme"
 import { ImageStyle } from "react-native"
 import { AutoImage, Icon } from "app/components"
 import I18n from "i18n-js"
+import { AppDrawerNavigatorContent } from "./AppDrawerNavigatorContent"
 
 export type AppDrawerNavigatorParamList = {
   PontosInteresseList: undefined
@@ -21,6 +22,7 @@ const AppDrawer = createDrawerNavigator<AppDrawerNavigatorParamList>()
 export const AppDrawerNavigator = () => {
   return (
     <AppDrawer.Navigator
+      drawerContent={(props) => <AppDrawerNavigatorContent {...props} />}
       screenOptions={{
         headerStyle: { backgroundColor: colors.tint },
         headerTintColor: colors.invertedText,

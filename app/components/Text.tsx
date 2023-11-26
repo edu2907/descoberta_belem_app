@@ -104,6 +104,13 @@ const $presets = {
   formLabel: [$baseStyle, $fontWeightStyles.medium] as StyleProp<TextStyle>,
 
   formHelper: [$baseStyle, $sizeStyles.sm, $fontWeightStyles.normal] as StyleProp<TextStyle>,
+
+  inverted: [$baseStyle, { color: colors.invertedText }] as StyleProp<TextStyle>,
+
+  boldInverted: [$baseStyle, $fontWeightStyles.bold, { color: colors.invertedText }] as StyleProp<TextStyle>,
+
+  subheadingInverted: [$baseStyle, $sizeStyles.lg, $fontWeightStyles.medium, { color: colors.invertedText }] as StyleProp<TextStyle>,
+
 }
 
 const $rtlStyle: TextStyle = isRTL ? { writingDirection: "rtl" } : {}
