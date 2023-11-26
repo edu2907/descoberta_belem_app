@@ -4,13 +4,19 @@ import { colors, spacing } from "app/theme"
 import { View, ViewStyle } from "react-native"
 import { Link, Text } from "app/components"
 import I18n from "i18n-js"
+import { useNavigation } from "@react-navigation/native"
 
 const Header = () => {
+  const navigation = useNavigation()
+
+  const goToRegister = () => navigation.navigate("Cadastro")
+  const goToLogin = () => navigation.navigate("Login")
+
   return (
     <View style={$header}>
-      <Link preset="subheadingInverted" text={I18n.t('auth.registerVerb')} />
+      <Link preset="subheadingInverted" text={I18n.t('auth.registerVerb')} onPress={goToRegister} />
       <Text preset="inverted" tx="common.or" />
-      <Link preset="subheadingInverted" text={I18n.t('auth.loginVerb')} />
+      <Link preset="subheadingInverted" text={I18n.t('auth.loginVerb')} onPress={goToLogin} />
     </View>
   )
 }

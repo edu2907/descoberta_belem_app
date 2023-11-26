@@ -1,12 +1,12 @@
 import React, { FC } from "react"
 import { observer } from "mobx-react-lite"
 import { ViewStyle } from "react-native"
-import { AuthNavigatorScreenProps } from "app/navigators"
+import { AppStackScreenProps } from "app/navigators"
 import { Screen, TextField } from "app/components"
 // import { useNavigation } from "@react-navigation/native"
 import { useStores } from "app/models"
 
-interface CadastroScreenProps extends AuthNavigatorScreenProps<"Cadastro"> {}
+interface CadastroScreenProps extends AppStackScreenProps<"Cadastro"> {}
 
 const useCadastroScreenViewController = () => {
   const { authenticationStore: { setAndDistributeAuthToken,  } } = useStores()
@@ -23,7 +23,7 @@ export const CadastroScreen: FC<CadastroScreenProps> = observer(function Cadastr
   const { register } = useCadastroScreenViewController()
 
   return (
-    <Screen style={$root} preset="scroll">
+    <Screen style={$root} preset="scroll" safeAreaEdges={["top", "bottom"]}>
       <TextField placeholder="Nome" />
     </Screen>
   )
