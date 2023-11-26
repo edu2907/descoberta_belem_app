@@ -59,12 +59,32 @@ const AppStack = observer(function AppStack() {
         animation: "fade_from_bottom",
         statusBarColor: colors.transparent,
         headerTintColor: colors.invertedText,
-        headerStyle: { backgroundColor: colors.palette.primary400 }
+        headerStyle: { backgroundColor: colors.tint },
       }}
     >
       <Stack.Screen name="Drawer" component={AppDrawerNavigator} />
-      <Stack.Screen name="Cadastro" component={Screens.CadastroScreen} />
-      <Stack.Screen name="Login" component={Screens.LoginScreen} />
+      <Stack.Screen
+        name="Cadastro"
+        component={Screens.CadastroScreen}
+        options={{
+          animation: "slide_from_bottom",
+          headerShown: true,
+          headerTransparent: true,
+          headerStyle: { backgroundColor: colors.transparent },
+          title: "",
+        }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Screens.LoginScreen}
+        options={{
+          animation: "slide_from_bottom",
+          headerShown: true,
+          headerTransparent: true,
+          headerStyle: { backgroundColor: colors.transparent },
+          title: "",
+        }}
+      />
       <Stack.Screen
         options={{ headerShown: true, title: "Detalhes" }}
         name="PontosInteresseDetail"
