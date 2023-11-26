@@ -1,4 +1,4 @@
-import React, { ComponentType, forwardRef, Ref, useImperativeHandle, useRef } from "react"
+import React, { ComponentType, forwardRef, Ref, useImperativeHandle, useRef, useState } from "react"
 import {
   StyleProp,
   TextInput,
@@ -11,6 +11,7 @@ import {
 import { isRTL, translate } from "../i18n"
 import { colors, spacing, typography } from "../theme"
 import { Text, TextProps } from "./Text"
+import { Icon } from "./Icon"
 
 export interface TextFieldAccessoryProps {
   style: StyleProp<any>
@@ -249,7 +250,8 @@ const $inputStyle: TextStyle = {
   fontFamily: typography.primary.normal,
   color: colors.text,
   fontSize: 16,
-  height: 24,
+  height: 36,
+  textAlignVertical: "center",
   // https://github.com/facebook/react-native/issues/21720#issuecomment-532642093
   paddingVertical: 0,
   paddingHorizontal: 0,
@@ -263,13 +265,35 @@ const $helperStyle: TextStyle = {
 
 const $rightAccessoryStyle: ViewStyle = {
   marginEnd: spacing.xs,
-  height: 40,
+  height: 50,
   justifyContent: "center",
   alignItems: "center",
 }
 const $leftAccessoryStyle: ViewStyle = {
   marginStart: spacing.xs,
-  height: 40,
+  height: 50,
   justifyContent: "center",
   alignItems: "center",
+}
+
+/**
+ * TextField abstraction for hidden text, such as passwords.
+ *
+ */
+export const SecureTextField = (props: TextFieldProps) => {
+  const [secureTextEntry, setSecureTextEntry] = useState(true)
+
+  return (
+    <TextField
+      {...props}
+      secureTextEntry={secureTextEntry}
+      RightAccessory={(props) => (
+        <Icon
+          containerStyle={props.style}
+          icon={secureTextEntry ? "view" : "hidden"}
+          onPress={() => setSecureTextEntry(!secureTextEntry)}
+        />
+      )}
+    />
+  )
 }

@@ -16,6 +16,7 @@ const pt_BR = {
   auth: {
     registerVerb: "Criar Conta",
     loginVerb: "Entrar",
+    loginOption: "Já possui uma conta?",
   },
   timeAgo: {
     minutes: 'há {{count}} minutos',
