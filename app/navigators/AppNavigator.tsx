@@ -57,7 +57,7 @@ const AppStack = observer(function AppStack() {
         headerShown: false,
         navigationBarColor: colors.background,
         animation: "fade_from_bottom",
-        statusBarColor: colors.palette.primary400,
+        statusBarColor: colors.transparent,
         headerTintColor: colors.invertedText,
         headerStyle: { backgroundColor: colors.palette.primary400 }
       }}

@@ -135,7 +135,7 @@ const $baseViewStyle: ViewStyle = {
 }
 
 const $baseTextStyle: TextStyle = {
-  fontSize: 16,
+  fontSize: 17,
   lineHeight: 20,
   fontFamily: typography.primary.medium,
   textAlign: "center",
@@ -157,7 +157,7 @@ const $viewPresets = {
     },
   ] as StyleProp<ViewStyle>,
 
-  filled: [$baseViewStyle, { backgroundColor: colors.palette.neutral300 }] as StyleProp<ViewStyle>,
+  filled: [$baseViewStyle, { backgroundColor: colors.palette.secondary500 }] as StyleProp<ViewStyle>,
 
   reversed: [
     $baseViewStyle,
@@ -167,7 +167,7 @@ const $viewPresets = {
 
 const $textPresets: Record<Presets, StyleProp<TextStyle>> = {
   default: $baseTextStyle,
-  filled: $baseTextStyle,
+  filled: [$baseTextStyle, { color: colors.palette.neutral200 }],
   reversed: [$baseTextStyle, { color: colors.palette.neutral100 }],
 }
 

@@ -18,11 +18,11 @@ const palette = {
   primary500: "#0C1631",
   primary600: "#091121",
 
-  secondary100: "#8C8129",
-  secondary200: "#74631E",
-  secondary300: "#5D5116",
-  secondary400: "#4C400D",
-  secondary500: "#3B2F06",
+  secondary100: "#C6860A",
+  secondary200: "#C57E08",
+  secondary300: "#C47606",
+  secondary400: "#C36E04",
+  secondary500: "#C26602",
 
   accent100: "#FFEED4",
   accent200: "#FFE1B2",
