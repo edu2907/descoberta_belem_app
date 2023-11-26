@@ -36,7 +36,7 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function CadastroScree
       linkText={I18n.t("auth.registerOption")}
       form={
         <>
-          <TextField placeholder="Nome" />
+          <TextField placeholder="Email" />
           <SecureTextField placeholder="Senha" />
         </>
       }

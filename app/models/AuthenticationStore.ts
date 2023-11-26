@@ -5,9 +5,9 @@ export const AuthenticationStoreModel = types
   .model("AuthenticationStore")
   .props({
     authToken: types.maybe(types.string),
-    authEmail: "",
+    authEmail: types.maybe(types.string),
   })
-  .views((store) => ({}))
+  .views((store) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
   .actions((store) => ({
     setAuthToken(value?: string) {
       store.authToken = value;
