@@ -1,6 +1,7 @@
 import { Instance, SnapshotOut, types } from "mobx-state-tree"
 import { AuthenticationStoreModel } from "./AuthenticationStore"
 import { UserModel } from "./User"
+import { ComentariosArrayModel } from "./ComentariosArray"
 
 /**
  * A RootStore model.
@@ -8,6 +9,7 @@ import { UserModel } from "./User"
 export const RootStoreModel = types.model("RootStore").props({
   authenticationStore: types.optional(AuthenticationStoreModel, {} as any),
   userStore: types.optional(UserModel, {} as any),
+  comentariosListStore: types.optional(ComentariosArrayModel, {} as any),
 })
 
 /**

@@ -1,6 +1,6 @@
 import React from "react"
 import { createDrawerNavigator } from "@react-navigation/drawer"
-import { PontosInteresseListScreen, WelcomeScreen } from "app/screens"
+import { PontosInteresseListScreen, UserComentariosListScreen, WelcomeScreen } from "app/screens"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { colors, spacing } from "app/theme"
 import { ImageStyle } from "react-native"
@@ -10,6 +10,7 @@ import { AppDrawerNavigatorContent } from "./AppDrawerNavigatorContent"
 
 export type AppDrawerNavigatorParamList = {
   PontosInteresseList: undefined
+  UserComentariosList: undefined
   Welcome: undefined
 }
 
@@ -41,6 +42,13 @@ export const AppDrawerNavigator = () => {
           ),
         }}
         component={PontosInteresseListScreen}
+      />
+      <AppDrawer.Screen
+        name="UserComentariosList"
+        options={{
+          title: "Minhas Avaliações",
+        }}
+        component={UserComentariosListScreen}
       />
     </AppDrawer.Navigator>
   )

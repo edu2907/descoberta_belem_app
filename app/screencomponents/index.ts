@@ -1,5 +1,5 @@
 export * from './PontosInteresseFlatlist'
 export * from './PontosInteresseHeader'
-export * from './PontoInteresseComentariosList'
+export * from './ComentariosList'
 export * from './AuthLayout'
 export * from './Comentario'

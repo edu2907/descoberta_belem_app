@@ -5,7 +5,7 @@ import { AppStackScreenProps } from "app/navigators"
 import { AutoImage, Button, Dropdown, Icon, Screen, Text } from "app/components"
 import { Mock } from "app/services/mock"
 import { colors, spacing } from "app/theme"
-import { PontoInteresseComentariosList } from "app/screencomponents"
+import { ComentariosList } from "app/screencomponents"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "app/models"
 
@@ -37,7 +37,7 @@ export const PontosInteresseDetailScreen: FC<PontosInteresseDetailScreenProps> =
     // const navigation = useNavigation()
     return (
       <Screen style={$root} preset="fixed" safeAreaEdges={["bottom"]}>
-        <PontoInteresseComentariosList
+        <ComentariosList
           comentarios={comentarios}
           header={
             <>

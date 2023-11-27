@@ -34,7 +34,8 @@ export type AppStackParamList = {
   PontosInteresseDetail: { pontosInteresseId: number }
   Cadastro: undefined
   Login: undefined
-  // IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
+  UserComentariosList: undefined
+	// IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
 }
 
 /**
