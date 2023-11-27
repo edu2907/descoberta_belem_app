@@ -20,13 +20,13 @@ export const AuthenticationStoreModel = types
       store.authToken = value;
     },
     distributeAuthToken(value?: string) {
-      const token = value || store.authToken;
+      const token = value;
       api.apisauce.setHeader("key", token);
     },
     setAndDistributeAuthToken(value?: string) {
       this.setAuthToken(value);
-      this.distributeAuthToken(value);
-    }
+      // this.distributeAuthToken(value);
+    } 
   }));
 
 export interface AuthenticationStore
