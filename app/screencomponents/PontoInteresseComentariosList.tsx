@@ -1,19 +1,10 @@
-import { Card, Text } from "app/components"
 import { spacing } from "app/theme"
-import { formatDate, showSinceDate } from "app/utils/formatDate"
-import { calcNumStars } from "app/utils/pontosInteresseUtils"
 import React from "react"
-import { FlatList, View, ViewStyle } from "react-native"
+import { FlatList, ViewStyle } from "react-native"
+import { Comentario, ComentarioProps } from "./Comentario"
 
 type PontoInteresseComentariosListProps = {
-  comentarios: Array<{
-    id: number
-    titulo: string
-    descricao: string
-    avaliacao: number
-    userName: string
-    published_at: string
-  }>
+  comentarios: Array<ComentarioProps['comentario']>
   header: JSX.Element
 }
 
@@ -24,21 +15,7 @@ export function PontoInteresseComentariosList({ comentarios, header }: PontoInte
       contentContainerStyle={$root}
       ListHeaderComponent={header}
       renderItem={({ item: comentario }) => (
-        <Card
-          content={comentario.descricao}
-          HeadingComponent={
-            <View>
-              <Text preset="subheading" text={comentario.titulo} />
-              <Text text={calcNumStars(comentario.avaliacao)} />
-            </View>
-          }
-          FooterComponent={
-            <View style={$footerTextContainer} >
-              <Text preset="bold" text={comentario.userName} />
-              <Text text={showSinceDate(comentario.published_at)} />
-            </View>
-          }
-        />
+        <Comentario comentario={comentario} />
       )}
     />
   )
@@ -48,9 +25,4 @@ const $root: ViewStyle = {
   gap: spacing.md,
   paddingVertical: spacing.md,
   paddingHorizontal: spacing.lg,
-}
-
-const $footerTextContainer: ViewStyle = {
-  flexDirection: 'row',
-  justifyContent: 'space-between',
 }

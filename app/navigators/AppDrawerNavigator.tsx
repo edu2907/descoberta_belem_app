@@ -42,7 +42,6 @@ export const AppDrawerNavigator = () => {
         }}
         component={PontosInteresseListScreen}
       />
-      <AppDrawer.Screen name="Welcome" component={WelcomeScreen} />
     </AppDrawer.Navigator>
   )
 }
