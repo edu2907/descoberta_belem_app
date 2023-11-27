@@ -18,11 +18,20 @@ const usePontosInteresseDetailScreenViewController = ({
 }: PontosInteresseDetailScreenViewControllerParams) => {
   const pontosInteresseId = route.params.pontosInteresseId
   const pontoInteresseData = Mock.fetchPontosInteresseById(pontosInteresseId)
-  const comentarios = Mock.fetchComentariosById(pontosInteresseId)
   const navigation = useNavigation()
   const {
     authenticationStore: { isAuthenticated },
+    comentariosListStore: { comentarios },
   } = useStores()
+
+  const getComentarios = () => {
+    return [
+      ...comentarios
+        .filter((comentario) => comentario.ponto_interesse_id === pontosInteresseId)
+        .map((comentario) => ({ ...comentario, userName: "Você" })),
+      ...Mock.fetchComentariosById(pontosInteresseId),
+    ]
+  }
 
   const goToAddComentario = () => {
     if (isAuthenticated) {
@@ -32,7 +41,7 @@ const usePontosInteresseDetailScreenViewController = ({
     }
   }
 
-  return { pontoInteresseData, comentarios, goToAddComentario }
+  return { pontoInteresseData, comentarios: getComentarios(), goToAddComentario }
 }
 
 interface PontosInteresseDetailScreenProps extends AppStackScreenProps<"PontosInteresseDetail"> {}
