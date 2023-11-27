@@ -2,7 +2,7 @@ import { Instance, SnapshotIn, SnapshotOut, types } from "mobx-state-tree";
 import { withSetPropAction } from "./helpers/withSetPropAction";
 
 export const ComentarioModel = types.model("Comentario").props({
-  id: types.number,
+  id: types.string,
   ponto_interesse_id: types.number,
   titulo: types.string,
   descricao: types.string,

@@ -4,13 +4,40 @@ import { View, ViewStyle } from "react-native"
 import { AppStackScreenProps } from "app/navigators"
 import { Button, Screen, TextField } from "app/components"
 import { colors, spacing } from "app/theme"
-// import { useNavigation } from "@react-navigation/native"
-// import { useStores } from "app/models"
+import { useStores } from "app/models"
+import { useNavigation } from "@react-navigation/native"
+import { comentarioFormSchema } from "./helpers/schemas"
+import { ValidationError } from "yup"
+import { parseValidationError } from "app/utils/yupUtils"
 
 const useAddComentarioScreenViewController = (props: AddComentarioScreenProps) => {
   const { pontosInteresseId } = props.route.params
   const [titulo, setTitulo] = useState<string>()
   const [descricao, setDescricao] = useState<string>()
+  const [error, setError] = useState<any>({})
+  const { comentariosListStore: { addComment } } = useStores()
+  const navigation = useNavigation()
+
+
+  const onSubmit = () => {
+    try {
+      comentarioFormSchema.validateSync({titulo, descricao}, {abortEarly: false})
+      addComment({
+        titulo,
+        descricao,
+        ponto_interesse_id: pontosInteresseId,
+        avaliacao: 10,
+        id: (new Date()).toISOString(),
+        published_at: (new Date()).toISOString(),
+      })
+  
+      navigation.goBack()
+    } catch (error) {
+      if (error instanceof ValidationError) {
+        setError(parseValidationError(error))
+      }
+    }
+  }
 
   return {
     formProps: {
@@ -21,6 +48,8 @@ const useAddComentarioScreenViewController = (props: AddComentarioScreenProps) =
       setTitulo,
       setDescricao,
     },
+    onSubmit,
+    formErrors: error,
   }
 }
 
@@ -28,12 +57,7 @@ interface AddComentarioScreenProps extends AppStackScreenProps<"AddComentario"> 
 
 export const AddComentarioScreen: FC<AddComentarioScreenProps> = observer(
   function AddComentarioScreen(props) {
-    const { formProps, formSets } = useAddComentarioScreenViewController(props)
-    // Pull in one of our MST stores
-    // const { someStore, anotherStore } = useStores()
-
-    // Pull in navigation via hook
-    // const navigation = useNavigation()
+    const { formProps, formSets, formErrors, onSubmit } = useAddComentarioScreenViewController(props)
     return (
       <Screen preset="scroll" safeAreaEdges={["bottom"]} contentContainerStyle={$root}>
         <View style={$formInputsContainer}>
@@ -42,6 +66,8 @@ export const AddComentarioScreen: FC<AddComentarioScreenProps> = observer(
             placeholder="Assunto"
             value={formProps.titulo}
             onChangeText={formSets.setTitulo}
+            status={formErrors.titulo ? "error" : undefined}
+            helper={formErrors.titulo?.message}
           />
           <TextField
             inputWrapperStyle={$textInputStyle}
@@ -49,11 +75,13 @@ export const AddComentarioScreen: FC<AddComentarioScreenProps> = observer(
             multiline={true}
             value={formProps.descricao}
             onChangeText={formSets.setDescricao}
+            status={formErrors.descricao ? "error" : undefined}
+            helper={formErrors.descricao?.message}
           />
         </View>
 
         <View style={$buttonContainer}>
-          <Button text="Enviar" preset="filled" />
+          <Button text="Enviar" preset="filled" onPress={onSubmit} />
         </View>
       </Screen>
     )
