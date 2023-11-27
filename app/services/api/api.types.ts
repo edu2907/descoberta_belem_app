@@ -34,6 +34,22 @@ export interface ApiFeedResponse {
   items: EpisodeItem[]
 }
 
+export interface UserRegistrationCredentials {
+  username: string
+  password1: string
+  password2: string
+}
+
+export interface UserLoginCredentials {
+  username: string
+  password: string
+}
+
+export interface UserTokenResponse {
+  key: string
+}
+
+
 /**
  * The options used to configure apisauce.
  */

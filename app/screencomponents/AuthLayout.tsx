@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import { observer } from "mobx-react-lite"
-import { ImageStyle, KeyboardAvoidingView, View, ViewStyle } from "react-native"
+import { ActivityIndicator, ImageStyle, KeyboardAvoidingView, View, ViewStyle } from "react-native"
 import { AutoImage, Button, Link, Screen } from "app/components"
 import { colors, spacing } from "app/theme"
 import { TxKeyPath } from "app/i18n"
@@ -13,6 +13,7 @@ interface AuthLayoutProps {
   form: JSX.Element
   buttonTx: TxKeyPath
   linkText: string
+  loading: boolean
 }
 
 export const AuthScreenLayout: FC<AuthLayoutProps> = observer(function CadastroScreen({
@@ -21,13 +22,31 @@ export const AuthScreenLayout: FC<AuthLayoutProps> = observer(function CadastroS
   form,
   linkText,
   buttonTx,
+  loading = false,
 }) {
   return (
-    <Screen contentContainerStyle={$root} preset="scroll" safeAreaEdges={["top"]} backgroundColor={colors.tint}>
+    <Screen
+      contentContainerStyle={$root}
+      preset="scroll"
+      safeAreaEdges={["top"]}
+      backgroundColor={colors.tint}
+    >
       <AutoImage source={logoImage} style={$logoImage} resizeMode="contain" />
       <View style={$formContainer}>
         <View style={$formInputsContainer}>{form}</View>
-        <Button preset="filled" tx={buttonTx} onPress={onConfirm} />
+        <Button
+          preset="filled"
+          tx={buttonTx}
+          onPress={onConfirm}
+          disabled={loading}
+          LeftAccessory={(props) => (
+            (
+              loading ? (
+                <ActivityIndicator style={props.style} animating={true} size="small" color={colors.palette.neutral200} />
+              ) : null
+            )
+          )}
+        />
       </View>
       <View style={$footerContainer}>
         <Link text={linkText} onPress={onLinkPress} style={$footerLink} />

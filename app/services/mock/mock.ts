@@ -1,3 +1,5 @@
+import { UserTokenResponse } from "../api";
+
 /* eslint-disable @typescript-eslint/no-unused-vars */
 const PontosInteresseList = [
   {
@@ -33,6 +35,23 @@ export const Mock = {
 
   fetchPontosInteresseById(id: number) {
     return PontosInteresseList.find((ponto) => ponto.id === id);
+  },
+
+  postRegistration(_data): Promise<UserTokenResponse> {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve({ key: 'fake-token' });
+      }, 2000);
+    });
+  },
+
+  postLogin(_data): Promise<UserTokenResponse> {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        console.log('registered lol')
+        resolve({ key: 'fake-token' });
+      }, 2000);
+    });
   },
 
   fetchComentariosById(id: number) {

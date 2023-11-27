@@ -7,8 +7,15 @@ export const AuthenticationStoreModel = types
     authToken: types.maybe(types.string),
     authEmail: types.maybe(types.string),
   })
-  .views((store) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars
+  .views((store) => ({
+    get isAuthenticated() {
+      return !!store.authToken;
+    },
+  })) // eslint-disable-line @typescript-eslint/no-unused-vars
   .actions((store) => ({
+    setAuthEmail(value?: string) {
+      store.authEmail = value;
+    },
     setAuthToken(value?: string) {
       store.authToken = value;
     },

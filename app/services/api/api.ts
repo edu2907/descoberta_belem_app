@@ -11,7 +11,7 @@ import {
 } from "apisauce"
 import Config from "../../config"
 import type {
-  ApiConfig,
+  ApiConfig, UserLoginCredentials, UserRegistrationCredentials, UserTokenResponse,
 } from "./api.types"
 
 /**
@@ -44,7 +44,17 @@ export class Api {
     })
   }
 
+  async postRegistration(data: UserRegistrationCredentials) {
+    const response = await this.apisauce.post<UserTokenResponse>("auth/registration/", data)
+    return response.data
+  }
+
+  async postLogin(data: UserLoginCredentials) {
+    const response = await this.apisauce.post<UserTokenResponse>("auth/login/", data)
+    return response.data
+  }
 }
+
 
 // Singleton instance of the API for convenience
 export const api = new Api()

@@ -5,6 +5,10 @@
  *
  * https://reactnative.dev/docs/security#storing-sensitive-info
  */
+if (!process.env.API_URL) {
+  throw new Error("You need to create a .env file in root of the project")
+}
+
 export default {
-  API_URL: "https://api.rss2json.com/v1/",
+  API_URL: process.env.API_URL,
 }
