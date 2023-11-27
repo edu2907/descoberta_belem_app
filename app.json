@@ -54,6 +54,12 @@
     },
     "plugins": [
       "expo-localization"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "d7d42552-7347-425d-873e-8112ba8cfc5c"
+      }
+    },
+    "owner": "edu2907"
   }
 }
