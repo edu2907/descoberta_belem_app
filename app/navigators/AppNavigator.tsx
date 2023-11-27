@@ -34,8 +34,8 @@ export type AppStackParamList = {
   PontosInteresseDetail: { pontosInteresseId: number }
   Cadastro: undefined
   Login: undefined
-  UserComentariosList: undefined
-	// IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
+  AddComentario: { pontosInteresseId: number }
+  // IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
 }
 
 /**
@@ -90,6 +90,15 @@ const AppStack = observer(function AppStack() {
         options={{ headerShown: true, title: "Detalhes" }}
         name="PontosInteresseDetail"
         component={Screens.PontosInteresseDetailScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          title: "Adicionar Comentário",
+          animation: "slide_from_bottom",
+        }}
+        name="AddComentario"
+        component={Screens.AddComentarioScreen}
       />
     </Stack.Navigator>
   )

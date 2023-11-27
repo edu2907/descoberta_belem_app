@@ -5,7 +5,7 @@ import { AutoImage, Button, Link, Screen } from "app/components"
 import { colors, spacing } from "app/theme"
 import { TxKeyPath } from "app/i18n"
 
-const logoImage = require("app/../assets/images/logo.png")
+const logoImage = require("assets/images/descoberta_logo.jpeg")
 
 interface AuthLayoutProps {
   onConfirm: () => void

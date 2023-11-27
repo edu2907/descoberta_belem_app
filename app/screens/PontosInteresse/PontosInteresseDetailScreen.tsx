@@ -6,8 +6,8 @@ import { AutoImage, Button, Dropdown, Icon, Screen, Text } from "app/components"
 import { Mock } from "app/services/mock"
 import { colors, spacing } from "app/theme"
 import { ComentariosList } from "app/screencomponents"
-// import { useNavigation } from "@react-navigation/native"
-// import { useStores } from "app/models"
+import { useNavigation } from "@react-navigation/native"
+import { useStores } from "app/models"
 
 type PontosInteresseDetailScreenViewControllerParams = {
   route: PontosInteresseDetailScreenProps["route"]
@@ -16,25 +16,33 @@ type PontosInteresseDetailScreenViewControllerParams = {
 const usePontosInteresseDetailScreenViewController = ({
   route,
 }: PontosInteresseDetailScreenViewControllerParams) => {
-  const pontoInteresseId = route.params.pontosInteresseId
-  const pontoInteresseData = Mock.fetchPontosInteresseById(pontoInteresseId)
-  const comentarios = Mock.fetchComentariosById(pontoInteresseId)
+  const pontosInteresseId = route.params.pontosInteresseId
+  const pontoInteresseData = Mock.fetchPontosInteresseById(pontosInteresseId)
+  const comentarios = Mock.fetchComentariosById(pontosInteresseId)
+  const navigation = useNavigation()
+  const {
+    authenticationStore: { isAuthenticated },
+  } = useStores()
 
-  return { pontoInteresseData, comentarios }
+  const goToAddComentario = () => {
+    if (isAuthenticated) {
+      navigation.navigate("AddComentario", { pontosInteresseId })
+    } else {
+      navigation.navigate("Login")
+    }
+  }
+
+  return { pontoInteresseData, comentarios, goToAddComentario }
 }
 
 interface PontosInteresseDetailScreenProps extends AppStackScreenProps<"PontosInteresseDetail"> {}
 
 export const PontosInteresseDetailScreen: FC<PontosInteresseDetailScreenProps> = observer(
   function PontosInteresseDetailScreen({ route }) {
-    const { pontoInteresseData, comentarios } = usePontosInteresseDetailScreenViewController({
-      route,
-    })
-    // Pull in one of our MST stores
-    // const { someStore, anotherStore } = useStores()
-
-    // Pull in navigation via hook
-    // const navigation = useNavigation()
+    const { pontoInteresseData, comentarios, goToAddComentario } =
+      usePontosInteresseDetailScreenViewController({
+        route,
+      })
     return (
       <Screen style={$root} preset="fixed" safeAreaEdges={["bottom"]}>
         <ComentariosList
@@ -54,7 +62,10 @@ export const PontosInteresseDetailScreen: FC<PontosInteresseDetailScreenProps> =
                 <Button
                   tx="mainScreen.post_comment"
                   preset="reversed"
-                  RightAccessory={(props) => <Icon {...props} icon="check" color={colors.palette.neutral100} />}
+                  onPress={goToAddComentario}
+                  RightAccessory={(props) => (
+                    <Icon {...props} icon="check" color={colors.palette.neutral100} />
+                  )}
                 />
               </View>
               <View style={$textInfoContainer}>
@@ -85,5 +96,5 @@ const $image: ImageStyle = {
 
 const $buttonContainer: ViewStyle = {
   paddingVertical: spacing.sm,
-  width: "100%",  
+  width: "100%",
 }

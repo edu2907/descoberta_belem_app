@@ -17,7 +17,7 @@ export type AppDrawerNavigatorParamList = {
 export type AppDrawerNavigatorScreenProps<T extends keyof AppDrawerNavigatorParamList> =
   NativeStackScreenProps<AppDrawerNavigatorParamList, T>
 
-const LogoImage = require("app/../assets/images/logo.png")
+const LogoImage = require("assets/images/descoberta_logo.jpeg")
 
 const AppDrawer = createDrawerNavigator<AppDrawerNavigatorParamList>()
 export const AppDrawerNavigator = () => {
@@ -33,13 +33,13 @@ export const AppDrawerNavigator = () => {
         name="PontosInteresseList"
         options={{
           title: I18n.t("mainScreen.title"),
-          headerTitleStyle: { flex: 1 },
-          headerTitle: () => (
-            <AutoImage style={$imageSize} source={LogoImage} resizeMode="contain" />
-          ),
-          headerRight: (props) => (
-            <Icon icon="view" style={$rightIconContainer} color={props.tintColor} />
-          ),
+          // headerTitleStyle: { flex: 1 },
+          // headerTitle: () => (
+          //   <AutoImage style={$imageSize} source={LogoImage} resizeMode="contain" />
+          // ),
+          // headerRight: (props) => (
+          //   <Icon icon="view" style={$rightIconContainer} color={props.tintColor} />
+          // ),
         }}
         component={PontosInteresseListScreen}
       />
